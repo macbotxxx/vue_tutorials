@@ -2,11 +2,12 @@
 let count = 0;
 
 const addToCount = () => {
-  count += 1;
+  count = count + 1;
 }
 
 const subtractCount = () => {
-  count -= 1;
+  
+  count = count - 1;
 }
 
 </script>
@@ -16,8 +17,8 @@ const subtractCount = () => {
     <div>
       <h1>Counter</h1>
       <h1>{{ count  }}</h1>
-      <button > - </button>
-      <button > + </button>
+      <button @click="subtractCount()"> - </button>
+      <button @click="addToCount()"> + </button>
   
     </div>
   </main>

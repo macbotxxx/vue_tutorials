@@ -11,7 +11,17 @@
     count.value = count.value - 1;
   }
 
-</script>
+</script> 
+
+<!-- <script >
+  export default({
+    data(){
+      return{
+        count : 0
+      }
+    }
+  })
+</script> -->
 
 <template>
   <main>

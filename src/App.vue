@@ -1,14 +1,15 @@
 <script setup>
-let count = 0;
+  import { ref } from 'vue'
 
-const addToCount = () => {
-  count = count + 1;
-}
+  const count = ref(0);
 
-const subtractCount = () => {
-  
-  count = count - 1;
-}
+  const addToCount = () => {
+    count.value = count.value + 1;
+  }
+ 
+  const subtractCount = () => {
+    count.value = count.value - 1;
+  }
 
 </script>
 

@@ -1,16 +1,30 @@
+<script setup>
+import { ref } from 'vue'
+
+const showModel = ref( false )
+
+</script>
+
+
+
 <template>
   <main>
-    <!-- <div class="overlay">
+    <!-- 
+      v-if is an if statement for vue
+      so v-if is True show this
+     -->
+    <div v-if="showModel" class="overlay">
       <div class="modal">
+        
         <textarea name="note" id="note" cols="30" rows="10"></textarea>
         <button>Add Note</button>
-        <button class="close">Close</button>
+        <button @click="showModel = false"  class="close">Close</button>
       </div>
-    </div> -->
+    </div>
     <div class="container">
       <header>
         <h1>Notes</h1>
-        <button>+</button>
+        <button @click="showModel = true">+</button>
       </header>
       <div class="cards-container">
         <div class="card">

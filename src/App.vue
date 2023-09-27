@@ -3,6 +3,23 @@ import { ref } from 'vue'
 
 const showModel = ref( false )
 const showContent = ref("")
+const notes = ref([])
+
+function getRandomColor() {
+  return "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+}
+
+const addNote = () => {
+  notes.value.push({
+    id: Math.floor(Math.random * 1000000),
+    text: showContent.value,
+    date: new Date(),
+    backgroundColor: getRandomColor()
+  })
+  showModel.value = false
+  showContent.value = ""
+
+}
 
 </script>
 
@@ -16,9 +33,8 @@ const showContent = ref("")
      -->
     <div v-if="showModel" class="overlay">
       <div class="modal">
-        {{ showContent  }}
         <textarea v-model="showContent" name="note" id="note" cols="30" rows="10"></textarea>
-        <button>Add Note</button>
+        <button @click="addNote">Add Note</button>
         <button @click="showModel = false"  class="close">Close</button>
       </div>
     </div>
@@ -27,6 +43,7 @@ const showContent = ref("")
         <h1>Notes</h1>
         <button @click="showModel = true">+</button>
       </header>
+   
       <div class="cards-container">
         <div class="card">
           <p class="main-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quasi corporis amet perspiciatis, libero est!</p>

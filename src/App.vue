@@ -46,7 +46,12 @@ const addNote = () => {
    
       <div class="cards-container">
 
-        <div v-for="note in notes" class="card" :style="{background: note.backgroundColor}">
+        <div 
+        v-for="note in notes" 
+        class="card"
+        :key="note.id"
+        :style="{background: note.backgroundColor}
+        ">
           <p class="main-text">{{ note.text }}</p>
           <p class="date">{{ note.date.toLocaleDateString("en-US")  }}</p>
         </div>

@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 const showModel = ref( false )
 const showContent = ref("")
+const errorMessages = ref("")
 const notes = ref([])
 
 function getRandomColor() {
@@ -10,6 +11,11 @@ function getRandomColor() {
 }
 
 const addNote = () => {
+
+  if(showContent.value.length < 9){
+    return errorMessages.value = "the note cant be more less than 9 characters";
+  }
+
   notes.value.push({
     id: Math.floor(Math.random * 1000000),
     text: showContent.value,
@@ -18,6 +24,7 @@ const addNote = () => {
   })
   showModel.value = false
   showContent.value = ""
+  errorMessages.value = ""
 
 }
 
@@ -33,9 +40,10 @@ const addNote = () => {
      -->
     <div v-if="showModel" class="overlay">
       <div class="modal">
-        <textarea v-model="showContent" name="note" id="note" cols="30" rows="10"></textarea>
+        <textarea v-model.trim="showContent" name="note" id="note" cols="30" rows="10"></textarea>
+        <p v-if="errorMessages" >{{ errorMessages  }}  </p>
         <button @click="addNote">Add Note</button>
-        <button @click="showModel = false"  class="close">Close</button>
+        <button @click="showModel = false , showContent = '' , errorMessages ='' "  class="close">Close</button>
       </div>
     </div>
     <div class="container">

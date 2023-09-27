@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 const showModel = ref( false )
+const showContent = ref("")
 
 </script>
 
@@ -15,8 +16,8 @@ const showModel = ref( false )
      -->
     <div v-if="showModel" class="overlay">
       <div class="modal">
-        
-        <textarea name="note" id="note" cols="30" rows="10"></textarea>
+        {{ showContent  }}
+        <textarea v-model="showContent" name="note" id="note" cols="30" rows="10"></textarea>
         <button>Add Note</button>
         <button @click="showModel = false"  class="close">Close</button>
       </div>
